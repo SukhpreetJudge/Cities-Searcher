@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<title>Search Results</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+<body class="w3-content" style="max-width:1200px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+    <h3 class="w3-wide"><b>Geo Search Engine</b></h3>
+  </div>
+
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <form method="post" >
+      <p>
+        Nearby locations:
+      </p>
+      {% if loc_cities is not none %}
+        {% for city in loc_cities %}
+          <a href="{{city[0]}}" class="w3-bar-item w3-button" name="button" value="button"> {{city[0]}}</a>
+          <br>
+          <br>
+        {% endfor %}
+      {% endif %}
+    </form>
+  </div>
+
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:250px">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:80px"></div>
+
+  <!-- Top header -->
+  <header class="w3-container w3-xlarge">
+    <p class="w3-left"> {{ search_query }}</p>
+    <p>
+      <form action="/results" method="post">
+          <div class="ds" style="height: 30px; margin: 6px 415pt;">
+              <input autocomplete="off" onblur="google&amp;&amp;google.fade&amp;&amp;google.fade()" maxlength="2048" name="query" class="lst" placeholder="Search a location..." value="" size="27" style="background: none repeat scroll 0% 0% rgb(255, 255, 255); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); color: rgb(0, 0, 0); font: 18px arial,sans-serif bold; height: 25px; margin: 0pt; padding: 5px 10px 0pt 6px; vertical-align: top;">
+          </div>
+          <div style="position:absolute;right:50px">
+            <input type="radio" name="distance" value="50">50</input>
+            <input type="radio" name="distance" value="125">125</input>
+            <input type="radio" name="distance" value="200"checked>200</input>
+          </div>
+          <br>
+      </form>
+    </p>
+  </header>
+
+  <!-- Initial Content -->
+  <footer class="w3-padding-64 w3-light-grey w3-small w3-right" id="footer">
+    <div class="w3-row-padding">
+      <div class="w3-col s12">
+        {{ first_result['summaries'] }}
+        <br>
+        <br>
+        Coordinates: {{ first_result['longitude'] }} , {{first_result['latitude'] }}
+        <div>
+          <img src="https://maps.googleapis.com/maps/api/staticmap?center={{first_result['latitude']}}%2c%20{{ first_result['longitude'] }}&zoom=10&size=400x400&key=AIzaSyCSeEZo1sEFs5Hnsxy3GNQrtBaxU2no7_A" />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Images -->
+  <div class="w3-padding-128">
+    <p>
+      Images:
+    </p>
+    <img src="{{ first_result['image1'] }}" height="200" width="200" />
+    <img src="{{ first_result['image2'] }}" height="200" width="200" />
+    <img src="{{ first_result['image3'] }}" height="200" width="200" />
+    <img src="{{ first_result['image4'] }}" height="200" width="200" />
+    <img src="{{ first_result['image5'] }}" height="200" width="200" />
+  </div>
+
+
+<!-- End page content -->
+
+</body>
+</html>

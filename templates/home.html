@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<title>Search</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+<body class="w3-content" style="max-width:1200px">
+
+<center>
+    <span id="body">
+        <center>
+            <br id="lgpd" clear="all">
+            <div id="lga">
+                <strong>Geo Search Engine</strong>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+            <form action="/results" method='post'>
+                <table cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr valign="top">
+                            <td width="0%">&nbsp;</td>
+                            <td align="center" nowrap="nowrap">
+                                <div class="ds" style="height: 32px; margin: 4px 0pt;">
+                                    <input autocomplete="off" onblur="google&amp;&amp;google.fade&amp;&amp;google.fade()" maxlength="2048" name="query" class="lst" placeholder="Search a location..." value="" size="57" style="background: none repeat scroll 0% 0% rgb(255, 255, 255); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); color: rgb(0, 0, 0); font: 18px arial,sans-serif bold; height: 25px; margin: 0pt; padding: 5px 8px 0pt 6px; vertical-align: top;">
+                                </div>
+                                <br style="line-height: 0pt;">
+                                <div>
+                                  <input type="radio" name="distance" value="50">50</input>
+                                  <input type="radio" name="distance" value="125">125</input>
+                                  <input type="radio" name="distance" value="200"checked>200</input>
+                                </div>
+                                <br>
+                                <span class="ds">
+                                    <span class="lsbb">
+                                        <input name="location" value="Search" class="lsb" onclick="this.checked=1" type="submit">
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </center>
+</center>
